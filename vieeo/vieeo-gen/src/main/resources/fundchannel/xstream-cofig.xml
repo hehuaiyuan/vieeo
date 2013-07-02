@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans package="com.shengpay.hpsc.core.domainservice.ccb.bean">
+	<header package="header" className="Header" alias="">
+	</header>
+
+	<bean package="head" className="TransactionHeader" alias="Head">
+		<property alias="TxCode" name="txCode" javaType="String" javaDefValue="" OmitField=""/>
+		<property alias="OrgCode" name="orgCode" javaType="String" javaDefValue="" OmitField=""/>
+		<property alias="SecFlag" name="secFlag" javaType="String" javaDefValue="" OmitField=""/>
+	</bean>
+
+	<bean package="preauth" className="PreAuthRequest" alias="Req">
+		<property alias="TxCode" name="txCode" javaType="String" javaDefValue="" OmitField=""/>
+		<property alias="TxCode" name="txCode" javaType="String" javaDefValue="" OmitField=""/>
+		<property alias="TxCode" name="txCode" javaType="String" javaDefValue="" OmitField=""/>
+		<property alias="TxCode" name="txCode" javaType="String" javaDefValue="" OmitField=""/>
+		<property alias="TxCode" name="txCode" javaType="String" javaDefValue="" OmitField=""/>
+		<property alias="TxCode" name="txCode" javaType="String" javaDefValue="" OmitField=""/>
+	</bean>
+</beans>

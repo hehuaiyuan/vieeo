@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd
+           http://www.springframework.org/schema/tx
+           http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		   http://www.springframework.org/schema/aop
+		   http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<bean id="genBuilder" class="com.vieeo.gen.build.impl.GenBuilder">
+		<property name="config" ref="config" />
+		<property name="templateService" ref="templateService" />
+		<property name="visitors">
+			<list>
+				<ref local="authChannelServiceVisitor" />
+				<ref local="preauthChannelServiceVisitor" />
+				<ref local="debitChannelServiceVisitor" />
+				<ref local="reversalChannelServiceVisitor" />
+				<ref local="refundChannelServiceVisitor" />
+				<ref local="checkInChannelServiceVisitor" />
+				<ref local="checkOutChannelServiceVisitor" />
+				<ref local="queryChannelServiceVisitor" />
+				<ref local="springConfigVisitor" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="beanConfig" abstract="true">
+		<property name="headerTemplateFile" value="${gen.bean.template.header}" />
+		<property name="requestTemplateFile" value="${gen.bean.template.request}" />
+		<property name="responseTemplateFile" value="${gen.bean.template.response}" />
+		<property name="processorTemplateFile" value="${gen.bean.template.processor}" />
+	</bean>
+
+	<bean id="springConfigVisitor" class="com.vieeo.gen.visit.fundchannel.GenSpringConfigVisitor">
+		<property name="templateFileName" value="${gen.config.template}" />
+		<property name="outputFileName" value="${gen.config.output}" />
+		<property name="channelCode" value="${gen.config.channelcode}" />
+		<property name="channelServiceConfig">
+			<bean class="com.vieeo.gen.config.fundchannel.ChannelServiceConfig" parent="beanConfig">
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="authChannelServiceVisitor" class="com.vieeo.gen.visit.fundchannel.GenChannelServiceVisitor">
+		<property name="templateFileName" value="${gen.auth.template}" />
+		<property name="outputFileName" value="${gen.auth.output}" />
+		<property name="opType" value="Auth" />
+		<property name="channelServiceConfig">
+			<bean class="com.vieeo.gen.config.fundchannel.ChannelServiceConfig" parent="beanConfig">
+				<property name="requestClassName" value="${gen.auth.dto.request}" />
+				<property name="responseClassName" value="${gen.auth.dto.response}" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="preauthChannelServiceVisitor" class="com.vieeo.gen.visit.fundchannel.GenChannelServiceVisitor">
+		<property name="templateFileName" value="${gen.preauth.template}" />
+		<property name="outputFileName" value="${gen.preauth.output}" />
+		<property name="opType" value="PreAuth" />
+		<property name="channelServiceConfig">
+			<bean class="com.vieeo.gen.config.fundchannel.ChannelServiceConfig" parent="beanConfig">
+				<property name="requestClassName" value="${gen.preauth.dto.request}" />
+				<property name="responseClassName" value="${gen.preauth.dto.response}" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="debitChannelServiceVisitor" class="com.vieeo.gen.visit.fundchannel.GenChannelServiceVisitor">
+		<property name="templateFileName" value="${gen.debit.template}" />
+		<property name="outputFileName" value="${gen.debit.output}" />
+		<property name="opType" value="Debit" />
+		<property name="channelServiceConfig">
+			<bean class="com.vieeo.gen.config.fundchannel.ChannelServiceConfig" parent="beanConfig">
+				<property name="requestClassName" value="${gen.debit.dto.request}" />
+				<property name="responseClassName" value="${gen.debit.dto.response}" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="reversalChannelServiceVisitor" class="com.vieeo.gen.visit.fundchannel.GenChannelServiceVisitor">
+		<property name="templateFileName" value="${gen.reversal.template}" />
+		<property name="outputFileName" value="${gen.reversal.output}" />
+		<property name="opType" value="Reversal" />
+		<property name="channelServiceConfig">
+			<bean class="com.vieeo.gen.config.fundchannel.ChannelServiceConfig" parent="beanConfig">
+				<property name="requestClassName" value="${gen.reversal.dto.request}" />
+				<property name="responseClassName" value="${gen.reversal.dto.response}" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="refundChannelServiceVisitor" class="com.vieeo.gen.visit.fundchannel.GenChannelServiceVisitor">
+		<property name="templateFileName" value="${gen.refund.template}" />
+		<property name="outputFileName" value="${gen.refund.output}" />
+		<property name="opType" value="Refund" />
+		<property name="channelServiceConfig">
+			<bean class="com.vieeo.gen.config.fundchannel.ChannelServiceConfig" parent="beanConfig">
+				<property name="requestClassName" value="${gen.refund.dto.request}" />
+				<property name="responseClassName" value="${gen.refund.dto.response}" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="checkInChannelServiceVisitor" class="com.vieeo.gen.visit.fundchannel.GenChannelServiceVisitor">
+		<property name="templateFileName" value="${gen.checkin.template}" />
+		<property name="outputFileName" value="${gen.checkin.output}" />
+		<property name="opType" value="CheckIn" />
+		<property name="channelServiceConfig">
+			<bean class="com.vieeo.gen.config.fundchannel.ChannelServiceConfig" parent="beanConfig">
+				<property name="requestClassName" value="${gen.checkin.dto.request}" />
+				<property name="responseClassName" value="${gen.checkin.dto.response}" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="checkOutChannelServiceVisitor" class="com.vieeo.gen.visit.fundchannel.GenChannelServiceVisitor">
+		<property name="templateFileName" value="${gen.checkout.template}" />
+		<property name="outputFileName" value="${gen.checkout.output}" />
+		<property name="opType" value="CheckOut" />
+		<property name="channelServiceConfig">
+			<bean class="com.vieeo.gen.config.fundchannel.ChannelServiceConfig" parent="beanConfig">
+				<property name="requestClassName" value="${gen.checkout.dto.request}" />
+				<property name="responseClassName" value="${gen.checkout.dto.response}" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="queryChannelServiceVisitor" class="com.vieeo.gen.visit.fundchannel.GenChannelServiceVisitor">
+		<property name="templateFileName" value="${gen.query.template}" />
+		<property name="outputFileName" value="${gen.query.output}" />
+		<property name="opType" value="Query" />
+		<property name="channelServiceConfig">
+			<bean class="com.vieeo.gen.config.fundchannel.ChannelServiceConfig" parent="beanConfig">
+				<property name="requestClassName" value="${gen.query.dto.request}" />
+				<property name="responseClassName" value="${gen.query.dto.response}" />
+			</bean>
+		</property>
+	</bean>
+
+</beans>

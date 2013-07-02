@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<domain  tableName="light_t">
+	<key>
+		<property name="sysName" javaType="String" javaDefValue=""
+			hbmType="string" hbmColumn="sys_name" hbmLength="50" />
+	</key>
+
+	<property name="age" javaType="Integer" javaDefValue=""
+		hbmType="integer" hbmColumn="age" hbmLength="50" hbmDefValue=""
+		notNull="true" webText="年龄" webQuery="true" webType="text" webColumn="true" webModify="true"/>
+
+	<property name="address" javaType="String" javaDefValue="123"
+		hbmType="string" hbmColumn="address" hbmLength="50" hbmDefValue=""
+		notNull="true" webText="地址" webModify="true"/>
+</domain>

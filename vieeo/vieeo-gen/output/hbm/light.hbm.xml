@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.vieeo.test.domain" default-lazy="true">
+
+	<class name="Light" table="light_t">
+		<id name="sysName" column="sys_name" unsaved-value="null" type="string" length="50">
+			<generator class="uuid" />
+		</id>
+		<property name="userCreated" length="100" update="false" />
+		<property name="userLastModified" length="100" insert="false" />
+		<property name="dateCreated" type="date" update="false" />
+		<property name="dateLastModified" type="date" insert="false" />
+
+		<property name="age" column="age" type="integer" length="50" not-null="true"/>
+		<property name="address" column="address" type="string" length="50" not-null="true"/>
+
+	</class>
+
+</hibernate-mapping>

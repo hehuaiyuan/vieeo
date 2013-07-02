@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.vieeo.domain" default-lazy="true">
+
+	<class name="User" table="r_user_t">
+		<id name="id" column="id" unsaved-value="null" type="long" length="10">
+			<generator class="sequence">
+				<param name="sequence">SEQ_FC_FLOW_STEP</param>
+			</generator>
+		</id>
+		<property name="userCreated" length="100" update="false" />
+		<property name="dateCreated" type="timestamp" update="false" />
+		<property name="dateLastModified" type="timestamp" insert="false" />
+
+		<property name="userName" column="user_name" type="string" />
+
+	</class>
+
+</hibernate-mapping>
