@@ -99,6 +99,10 @@
 			<artifactId>json</artifactId>
 			<version>20080701</version>
 		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+		</dependency>
 
 		<!-- test -->
 		<!-- <dependency> <groupId>com.sun</groupId> <artifactId>tools</artifactId>
@@ -130,6 +134,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 		</dependency>
+
 	</dependencies>
 </project>
 
