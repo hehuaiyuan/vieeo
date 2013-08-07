@@ -1,7 +1,4 @@
-/**
- *
- */
-package com.shengpay.sndadec.util;
+package com.vieeo.util;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -9,15 +6,10 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.Enumeration;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 /**
  *
  */
 public class IpUtil {
-
-	private static Log logger = LogFactory.getLog(IpUtil.class);
 
 	//回环地址
 	private static String LOOP_BACK_ADDRESS = "127.0.0.1";
@@ -30,8 +22,8 @@ public class IpUtil {
         String localIp = LOOP_BACK_ADDRESS;
         try {
             localIp = InetAddress.getLocalHost().getHostAddress();
-        } catch (UnknownHostException ignore) {
-        	logger.warn(ignore);
+        } catch (UnknownHostException e) {
+        	e.printStackTrace();
         }
         return localIp;
     }
@@ -56,8 +48,8 @@ public class IpUtil {
 					}
 				}
 			}
-		} catch (SocketException ignore) {
-			logger.warn(ignore);
+		} catch (SocketException e) {
+			e.printStackTrace();
 		}
         return localIp;
     }
