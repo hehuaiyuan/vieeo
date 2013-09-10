@@ -76,4 +76,23 @@ public class StringOthersUtils {
 	    String appendSpaces = StringUtils.substring(spaces, 0, size);
 	    return (value+appendSpaces);
 	}
+
+	/**
+	 * 判断指定值是否在指定的数组内存在
+	 * @param array
+	 * @param value
+	 * @return
+	 */
+	public static boolean exists(String[] array,String value){
+	    if(array == null || array.length <=0 || StringUtils.isBlank(value)){
+	        return false;
+	    }
+	    for (String str : array) {
+            if(StringUtils.equals(StringUtils.trim(str), StringUtils.trim(value))){
+                return true;
+            }
+        }
+	    return false;
+	}
+
 }

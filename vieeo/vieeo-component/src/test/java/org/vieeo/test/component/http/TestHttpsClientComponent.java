@@ -5,22 +5,22 @@ import java.util.Map;
 
 import junit.framework.TestCase;
 
-import com.vieeo.component.http.HttpClientComponent;
+import com.vieeo.component.http.HttpsClientComponent;
 
-public class TestHttpClientComponent extends TestCase{
+public class TestHttpsClientComponent extends TestCase{
 
 	public void testPost() throws Exception{
 		try {
-			HttpClientComponent client = new HttpClientComponent();
+		    HttpsClientComponent client = new HttpsClientComponent();
 
 			//String url = "http://api.thingture.com/Api/QueryAllProduct";
 
 			//String url = "http://api.thingture.com/Api/QueryProductDetails";
 
-			String url = "http://10.132.97.28:5050/yxcard-management-web/services/rest/consume/vertify";
+			String url = "https://www.google.com/";
 
 			Map<String,String> params = new HashMap<String,String>();
-			params.put("appId", "zf181");
+			params.put("appId", "测试");
 			params.put("cardNo", "8013359900000500");
 			params.put("gameCompanyType", "1");
 			params.put("chargeAccount", "123456");
@@ -28,7 +28,7 @@ public class TestHttpClientComponent extends TestCase{
 			params.put("gameCompanyId", "105");
 			params.put("userIp", "220.168.36.33");
 
-			System.out.println(client.doPost(url, params));
+			System.out.println(client.doGet(url, params));
 		}catch(Exception e){
 			e.printStackTrace();
 		}
