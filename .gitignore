@@ -1,0 +1,4 @@
+vieeo/*/.settings/
+vieeo/*/target/
+*.classpath
+*.project
