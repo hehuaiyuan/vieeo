@@ -158,4 +158,9 @@ public class Base64 {
 		return null;
 	}
 
+	public static void main(String[] args) {
+		//MjUyNDY2NDg1NnwwNTQ3OTU5ODQyODEwMTg5
+		System.out.println(Base64.encode("2524664856|0547959842810189".getBytes()));
+	}
+
 }

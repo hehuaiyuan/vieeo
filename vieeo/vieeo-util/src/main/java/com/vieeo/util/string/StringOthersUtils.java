@@ -95,4 +95,8 @@ public class StringOthersUtils {
 	    return false;
 	}
 
+	public static String formatNumber(int zeroSize,String appendStr){
+	    return String.format("%1$10d",appendStr);
+	}
+
 }
